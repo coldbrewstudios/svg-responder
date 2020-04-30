@@ -17,12 +17,13 @@ function _handleFiles() {
 }
 
 function _handleReader(reader, downloadReader, file) {
+	const fileName = file.name;
 	reader.readAsText(file);
 
 	reader.onload = () => _formatImage(reader, downloadReader);
 	reader.onerror = () => console.log(reader.error);
 
-	downloadReader.onload = () => _generateImage(downloadReader);
+	downloadReader.onload = () => _generateImage(downloadReader, fileName);
 	downloadReader.onerror = () => console.log(downloadReader.error);
 }
 
@@ -39,13 +40,13 @@ function _createDownloadableSVG(downloadReader, svgData) {
 	downloadReader.readAsDataURL(blob);
 }
 
-function _generateImage(downloadReader) {
+function _generateImage(downloadReader, fileName) {
 	const imageContainer = document.createElement('div');
 	const linkElement = document.createElement('a');
 	const imageElement = document.createElement('img');
 
 	linkElement.setAttribute('href', downloadReader.result);
-	linkElement.setAttribute('download', '');
+	linkElement.setAttribute('download', fileName);
 
 	imageContainer.classList.add('image-container');
 	linkElement.appendChild(imageElement);
