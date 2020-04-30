@@ -4,8 +4,6 @@ import copy from './util/copy';
 const inputElement = document.getElementById('svgInput');
 const svgContainerElement = document.getElementById('svgContainer');
 
-window.copyToClipboard = () => copy('svgCopyInput');
-
 inputElement.addEventListener('change', _handleFiles, false);
 
 function _handleFiles() {
@@ -21,30 +19,39 @@ function _handleFiles() {
 function _handleReader(reader, downloadReader, file) {
 	reader.readAsText(file);
 
-	reader.onload = () => {
-		const svgCopyInputElement = document.getElementById('svgCopyInput');
-		const linesList = reader.result.split('\n');
-		const modifiedLinesList = linesList.reduce(svgFormatManager.format, []);
-		const modifiedSVG = modifiedLinesList.join('\n');
-
-		svgCopyInputElement.value = modifiedSVG;
-		_createDownloadableSVG(downloadReader, modifiedSVG);
-	};
-
-	downloadReader.onload = () => {
-		const imageElement = document.createElement('img');
-		imageElement.src = downloadReader.result;
-		svgContainerElement.appendChild(imageElement);
-	};
-
+	reader.onload = () => _formatImage(reader, downloadReader);
 	reader.onerror = () => console.log(reader.error);
+
+	downloadReader.onload = () => _generateImage(downloadReader);
 	downloadReader.onerror = () => console.log(downloadReader.error);
 }
 
+function _formatImage(reader, downloadReader) {
+	const linesList = reader.result.split('\n');
+	const modifiedLinesList = linesList.reduce(svgFormatManager.format, []);
+	const modifiedSVG = modifiedLinesList.join('\n');
+
+	_createDownloadableSVG(downloadReader, modifiedSVG);
+}
 
 function _createDownloadableSVG(downloadReader, svgData) {
 	const blob = _generateSVGBlob(svgData);
 	downloadReader.readAsDataURL(blob);
+}
+
+function _generateImage(downloadReader) {
+	const imageContainer = document.createElement('div');
+	const linkElement = document.createElement('a');
+	const imageElement = document.createElement('img');
+
+	linkElement.setAttribute('href', downloadReader.result);
+	linkElement.setAttribute('download', '');
+
+	imageContainer.classList.add('image-container');
+	linkElement.appendChild(imageElement);
+	imageContainer.appendChild(linkElement);
+	imageElement.src = downloadReader.result;
+	svgContainerElement.appendChild(imageContainer);
 }
 
 function _generateSVGBlob(svgData) {
