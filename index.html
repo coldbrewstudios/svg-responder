@@ -7,20 +7,18 @@
 <body>
 	<div>
 		<label for="svgInput">Select a file:</label>
-		<input type="file" id="svgInput" name="svgInput">
+		<input type="file" id="svgInput" name="svgInput" multiple>
 	</div>
 
 	<div>
 		<label for="svgCopyInput">Copy SVG:</label>
 		<textarea name="svgCopyInput" id="svgCopyInput" value="" readonly></textarea>
 		<input type="button" onclick="copyToClipboard()" value="Copy me!">
-		<a id="svgDownloadButton" href="" download="">Download Me!</a>
 	</div>
 
 	<div id="svgContainer">
 	</div>
 
-	<script type="module" src="src/index.js"></script>
-	<script type="application/javascript"></script>
+	<script type="application/javascript" src="src/index.js"></script>
 </body>
 </html>

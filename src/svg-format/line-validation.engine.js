@@ -8,3 +8,7 @@ export function containsExcludedTag(line) {
 export function containsSVGTag(line) {
 	return line.match(regexTypes.svgTag.regex);
 }
+
+export function containsResponsiveAttribute(line) {
+	return line.match(regexTypes.responsiveAttribute.regex);
+}

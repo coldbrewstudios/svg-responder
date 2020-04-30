@@ -15,5 +15,8 @@ export const regexTypes = {
 	],
 	svgTag: {
 		regex: new RegExp(/<svg[\s\S]*?>/)
+	},
+	responsiveAttribute: {
+		regex: new RegExp(/preserveAspectRatio/)
 	}
 };
