@@ -1,4 +1,4 @@
-import { regexTypes } from './regex-types.const.mjs';
+import { regexTypes } from './regex-types.const.js';
 
 export function containsExcludedTag(line) {
 	const containsExcludedTag = regexTypes.excludeChecks.filter((excludeCheck) => line.match(excludeCheck.regex));

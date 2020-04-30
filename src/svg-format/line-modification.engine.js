@@ -1,8 +1,8 @@
-const aspectRatioString = 'preserveAspectRatio="xMidYMax meet"';
+const aspectRatioAttribute = 'preserveAspectRatio="xMidYMax meet"';
 
 export function modifySVGTag(line) {
 	const lineData = line.split(' ');
-	lineData.splice(1, 0, aspectRatioString);
+	lineData.splice(1, 0, aspectRatioAttribute);
 	const modifiedLineData = lineData.filter(_removeUnneededTagAttributes);
 
 	return modifiedLineData.join(' ');
