@@ -4,7 +4,7 @@
   "description": "SVG Responsive Editor Tool",
   "main": "index.js",
   "scripts": {
-    "build": "parcel index.html",
+    "build": "parcel build index.html",
     "dev": "parcel index.html --port 5000"
   },
   "repository": {
