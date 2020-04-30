@@ -4,11 +4,9 @@ const outputPath = '../dist/test.svg';
 
 function createFile() {
 	try {
-		return fs.createWriteStream(outputPath, {
-			flags: 'a'
-		});
+		return fs.createWriteStream(outputPath, {flags: 'a'});
 	} catch (e) {
-		console.error('Error creating svg file')
+		console.error('Error creating svg file');
 	}
 }
 

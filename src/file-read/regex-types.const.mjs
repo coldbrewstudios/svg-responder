@@ -1,4 +1,4 @@
-module.exports = {
+export const regexTypes = {
 	excludeChecks: [
 		{
 			regex: new RegExp(/<\?xml[\s\S]*?\?>/),
@@ -13,5 +13,7 @@ module.exports = {
 			regex: new RegExp(/<desc[\s\S]*?<\/desc>/),
 		}
 	],
-	svgTag: new RegExp(/<svg[\s\S]*?>/),
+	svgTag: {
+		regex: new RegExp(/<svg[\s\S]*?>/)
+	}
 };
