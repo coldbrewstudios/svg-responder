@@ -1,8 +1,9 @@
 body {
 	font-family: 'PT Serif', serif;
+	font-size: 18px;
 }
 
-h1 {
+h1, h2 {
 	font-weight: normal;
 }
 
@@ -12,6 +13,7 @@ input[type="file"] {
 
 button, input,
 .custom-file-upload {
+	font-family: inherit;
 	padding: 5px 20px;
 	cursor: pointer;
 	border-radius: 4px;
