@@ -31,6 +31,16 @@ button, input,
 	grid-column-end: 3;
 }
 
+.info {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	border-top: 1px solid #CCCCCC;
+}
+
+.info-item {
+	padding: 0 20px;
+}
+
 #svgContainer {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
