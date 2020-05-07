@@ -6,6 +6,8 @@ const svgContainerElement = document.getElementById('svgContainer');
 
 inputElement.addEventListener('change', _handleFiles, false);
 
+window.clearExistingElements = _clearExistingElements;
+
 function _handleFiles() {
 	const files = this.files;
 
@@ -18,6 +20,7 @@ function _handleFiles() {
 
 function _handleReader(reader, downloadReader, file) {
 	const fileName = file.name;
+	clearExistingElements();
 	reader.readAsText(file);
 
 	reader.onload = () => _formatImage(reader, downloadReader);
@@ -25,6 +28,11 @@ function _handleReader(reader, downloadReader, file) {
 
 	downloadReader.onload = () => _generateImage(downloadReader, fileName);
 	downloadReader.onerror = () => console.log(downloadReader.error);
+}
+
+function _clearExistingElements() {
+	svgContainerElement.innerHTML = '';
+	inputElement.value = '';
 }
 
 function _formatImage(reader, downloadReader) {
