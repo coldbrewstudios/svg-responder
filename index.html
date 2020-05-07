@@ -4,15 +4,36 @@
 	<meta charset="UTF-8">
 	<title>SVG Responsive Engine</title>
 	<link rel="stylesheet" href="./src/styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div>
-		<label for="svgInput">Select a file:</label>
-		<input type="file" id="svgInput" name="svgInput" multiple>
-		<button onclick="clearExistingElements()">Clear</button>
-	</div>
+	<div class="container">
+		<h1>R-SVG</h1>
+		<div class="info">
+			<div class="info-item">
+				<h2>What Does R-SVG do?</h2>
+				<p>
+					R-SVG is a lightweight tool to help you take your SVG's from programs like Sketch and convert them to
+					auto-scaling SVG's. It's as simple as that!
+				</p>
+			</div>
 
-	<div id="svgContainer">
+			<div class="info-item">
+				<h2>What do I have to do?</h2>
+				<p>
+					Simply upload a SVG (or multiple) and then once it has converted click on the new version. This will automatically
+					download. Or right click and Save As!
+				</p>
+			</div>
+		</div>
+		<div style="border-top: 1px solid #CCCCCC; padding-top: 40px">
+			<label for="svgInput" class="custom-file-upload">Select file/s</label>
+			<input type="file" id="svgInput" name="svgInput" multiple>
+			<button onclick="clearExistingElements()">Clear All</button>
+		</div>
+
+		<div id="svgContainer">
+		</div>
 	</div>
 
 	<script type="application/javascript" src="src/index.js"></script>
