@@ -51,4 +51,22 @@ button, input,
 
 .image-container {
 	margin: 10px;
+	position: relative;
+}
+
+.image-container:before {
+    content: "click svg to download";
+    padding: 4px 8px;
+    background-color: slategray;
+    color: white;
+    bottom: 112%;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    opacity: 0;
+}
+
+.image-container:hover:before {
+    opacity: 1;
 }
